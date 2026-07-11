@@ -4,7 +4,7 @@ import logo from '../assets/carfish-logo.png'
 const LINKS = [
   { href: '#recursos', label: 'Recursos' },
   { href: '#telas', label: 'Telas do app' },
-  { href: '#planos', label: 'Planos' },
+  // { href: '#planos', label: 'Planos' },
   { href: '#privacidade', label: 'Privacidade' },
 ]
 
