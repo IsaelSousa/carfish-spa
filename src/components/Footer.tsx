@@ -22,7 +22,7 @@ export default function Footer() {
           <nav className="footer__links">
             <a href="#recursos">Recursos</a>
             <a href="#telas">Telas do app</a>
-            <a href="#planos">Planos</a>
+            {/* <a href="#planos">Planos</a> */}
             <a href="#privacidade">Privacidade</a>
           </nav>
           <p className="footer__contact">Contato: carfish364@gmail.com</p>
