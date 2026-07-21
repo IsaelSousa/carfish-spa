@@ -42,16 +42,34 @@ const EXTRA_FEATURES: Feature[] = [
     description: 'Filtre e reveja todas as atividades registradas por tipo e data.',
   },
   {
-    emoji: '👥',
-    title: 'Colaboradores',
-    description: 'Compartilhe o veículo com outras pessoas para registrar atividades juntos.',
-  },
-  {
     emoji: '🔒',
     title: 'Login seguro',
     description: 'Autenticação via Google com Firebase, sem senhas para lembrar.',
   },
 ]
+
+// const EXTRA_FEATURES: Feature[] = [
+//   {
+//     emoji: '🚗',
+//     title: 'Múltiplos veículos',
+//     description: 'Cadastre vários carros e alterne entre eles em segundos.',
+//   },
+//   {
+//     emoji: '📋',
+//     title: 'Histórico completo',
+//     description: 'Filtre e reveja todas as atividades registradas por tipo e data.',
+//   },
+//   {
+//     emoji: '👥',
+//     title: 'Colaboradores',
+//     description: 'Compartilhe o veículo com outras pessoas para registrar atividades juntos.',
+//   },
+//   {
+//     emoji: '🔒',
+//     title: 'Login seguro',
+//     description: 'Autenticação via Google com Firebase, sem senhas para lembrar.',
+//   },
+// ]
 
 export default function Features() {
   return (
