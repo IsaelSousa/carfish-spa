@@ -19,10 +19,10 @@ export default function ScreensShowcase() {
             <div className="mock mock--select">
               <div className="mock-appbar">
                 <img src={logo} alt="" className="mock-appbar__logo" />
-                <span>Seus veículos</span>
+                <span />
                 <span className="mock-appbar__icon">⋮</span>
               </div>
-              <div className="mock-select__usage">2 de 3 veículos utilizados</div>
+              <div className="mock-select__usage">2 de 2 veículos utilizados</div>
               <div className="mock-select__list">
                 <div className="mock-select__item">
                   <div>
