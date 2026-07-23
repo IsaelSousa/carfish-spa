@@ -5,7 +5,7 @@ export default function WhatsNew() {
 
   return (
     <section id="novidades" className="whats-new">
-      <div className="section-heading">
+      <div className="section-heading section-heading--start">
         <span className="eyebrow">{t.whatsNew.eyebrow}</span>
         <h2>{t.whatsNew.title}</h2>
         <p>{t.whatsNew.intro}</p>

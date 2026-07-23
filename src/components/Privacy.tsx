@@ -5,7 +5,7 @@ export default function Privacy() {
 
   return (
     <section id="privacidade" className="privacy">
-      <div className="section-heading">
+      <div className="section-heading section-heading--start">
         <span className="eyebrow">{t.privacy.eyebrow}</span>
         <h2>{t.privacy.title}</h2>
         <p>{t.privacy.updatedAt}</p>

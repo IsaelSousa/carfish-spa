@@ -24,14 +24,18 @@ export default function Hero() {
               {t.hero.ctaSecondary}
             </a>
           </div>
-          <div className="hero__stats">
+          <ul className="hero__trust">
             {t.hero.stats.map((stat) => (
-              <div key={stat.label}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
+              <li key={stat.label}>
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>
+                  <strong>{stat.value}</strong> {stat.label}
+                </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         <div className="hero__visual">
