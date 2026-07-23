@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
 import logo from '../assets/carfish-logo.png'
-
-const LINKS = [
-  { href: '#recursos', label: 'Recursos' },
-  { href: '#telas', label: 'Telas do app' },
-  // { href: '#planos', label: 'Planos' },
-  { href: '#privacidade', label: 'Privacidade' },
-]
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Navbar() {
+  const { locale, setLocale, t } = useLanguage()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
+  const LINKS = [
+    { href: '#recursos', label: t.nav.recursos },
+    { href: '#telas', label: t.nav.telas },
+    // { href: '#planos', label: 'Planos' },
+    { href: '#novidades', label: t.nav.novidades },
+    { href: '#privacidade', label: t.nav.privacidade },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -35,14 +38,30 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <div className="navbar__lang" role="group" aria-label="Language">
+            <button
+              type="button"
+              className={`navbar__lang-btn ${locale === 'pt' ? 'navbar__lang-btn--active' : ''}`}
+              onClick={() => setLocale('pt')}
+            >
+              PT
+            </button>
+            <button
+              type="button"
+              className={`navbar__lang-btn ${locale === 'en' ? 'navbar__lang-btn--active' : ''}`}
+              onClick={() => setLocale('en')}
+            >
+              EN
+            </button>
+          </div>
           <a href="#baixar" className="navbar__cta" onClick={handleLinkClick}>
-            Baixar o app
+            {t.nav.baixar}
           </a>
         </nav>
 
         <button
           className="navbar__toggle"
-          aria-label="Abrir menu"
+          aria-label={t.nav.abrirMenu}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >

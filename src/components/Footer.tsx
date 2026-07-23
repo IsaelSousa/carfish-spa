@@ -1,14 +1,17 @@
 import logo from '../assets/carfish-logo.png'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   return (
     <>
       <section id="baixar" className="download-cta">
         <div className="download-cta__inner">
-          <h2>Pronto para organizar a manutenção do seu carro?</h2>
-          <p>CarFish está em versão beta para Android. Experimente gratuitamente.</p>
+          <h2>{t.footer.ctaTitle}</h2>
+          <p>{t.footer.ctaDescription}</p>
           <a href="#topo" className="btn btn--primary btn--lg">
-            Entrar com Google
+            {t.footer.ctaButton}
           </a>
         </div>
       </section>
@@ -20,16 +23,16 @@ export default function Footer() {
             <span>CARFISH</span>
           </div>
           <nav className="footer__links">
-            <a href="#recursos">Recursos</a>
-            <a href="#telas">Telas do app</a>
+            <a href="#recursos">{t.nav.recursos}</a>
+            <a href="#telas">{t.nav.telas}</a>
             {/* <a href="#planos">Planos</a> */}
-            <a href="#privacidade">Privacidade</a>
+            <a href="#novidades">{t.nav.novidades}</a>
+            <a href="#privacidade">{t.nav.privacidade}</a>
           </nav>
-          <p className="footer__contact">Contato: carfish364@gmail.com</p>
+          <p className="footer__contact">{t.footer.contactLabel}</p>
         </div>
         <p className="footer__copy">
-          © {new Date().getFullYear()} CarFish. Todos os direitos reservados. Este site é uma
-          apresentação não-oficial do aplicativo.
+          © {new Date().getFullYear()} CarFish. {t.footer.copy}
         </p>
       </footer>
     </>

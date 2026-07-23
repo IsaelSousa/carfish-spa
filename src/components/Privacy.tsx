@@ -1,23 +1,25 @@
-import { privacyMeta, privacySections } from '../data/privacyContent'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Privacy() {
+  const { t } = useLanguage()
+
   return (
     <section id="privacidade" className="privacy">
       <div className="section-heading">
-        <span className="eyebrow">Privacidade</span>
-        <h2>{privacyMeta.title}</h2>
-        <p>{privacyMeta.updatedAt}</p>
+        <span className="eyebrow">{t.privacy.eyebrow}</span>
+        <h2>{t.privacy.title}</h2>
+        <p>{t.privacy.updatedAt}</p>
       </div>
 
       <div className="privacy__panel">
         <div className="privacy__notice">
-          <strong>{privacyMeta.betaNotice.title}</strong>
-          <p>{privacyMeta.betaNotice.body}</p>
+          <strong>{t.privacy.betaNoticeTitle}</strong>
+          <p>{t.privacy.betaNoticeBody}</p>
         </div>
 
-        <p className="privacy__intro">{privacyMeta.intro}</p>
+        <p className="privacy__intro">{t.privacy.intro}</p>
 
-        {privacySections.map((section) => (
+        {t.privacy.sections.map((section) => (
           <article className="privacy__section" key={section.title}>
             <h3>{section.title}</h3>
             <p>{section.body}</p>

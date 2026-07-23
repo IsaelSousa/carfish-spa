@@ -3,14 +3,18 @@ import fuelIcon from '../assets/icons/fuel-tank.svg'
 import wrenchIcon from '../assets/icons/wrench.svg'
 import washIcon from '../assets/icons/hand-wash.svg'
 import PhoneFrame from './PhoneFrame'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function ScreensShowcase() {
+  const { t } = useLanguage()
+  const { select, home, history } = t.screens
+
   return (
     <section id="telas" className="screens">
       <div className="section-heading">
-        <span className="eyebrow">Telas do app</span>
-        <h2>Uma experiência simples do primeiro ao último clique</h2>
-        <p>Da seleção do veículo ao registro de uma nova atividade.</p>
+        <span className="eyebrow">{t.screens.eyebrow}</span>
+        <h2>{t.screens.title}</h2>
+        <p>{t.screens.subtitle}</p>
       </div>
 
       <div className="screens__grid">
@@ -22,19 +26,19 @@ export default function ScreensShowcase() {
                 <span />
                 <span className="mock-appbar__icon">⋮</span>
               </div>
-              <div className="mock-select__usage">2 de 2 veículos utilizados</div>
+              <div className="mock-select__usage">{select.usage}</div>
               <div className="mock-select__list">
                 <div className="mock-select__item">
                   <div>
-                    <strong>ABC-1234</strong>
-                    <span>Fiat Argo 2022</span>
+                    <strong>{select.car1Name}</strong>
+                    <span>{select.car1Desc}</span>
                   </div>
                   <span className="mock-select__trash">🗑</span>
                 </div>
                 <div className="mock-select__item">
                   <div>
-                    <strong>XYZ-5678</strong>
-                    <span>Honda Civic 2020</span>
+                    <strong>{select.car2Name}</strong>
+                    <span>{select.car2Desc}</span>
                   </div>
                   <span className="mock-select__trash">🗑</span>
                 </div>
@@ -42,8 +46,8 @@ export default function ScreensShowcase() {
               <div className="mock-fab">+</div>
             </div>
           </PhoneFrame>
-          <h3>Selecionar veículo</h3>
-          <p>Cadastre quantos veículos precisar e alterne entre eles a qualquer momento.</p>
+          <h3>{select.cardTitle}</h3>
+          <p>{select.cardDescription}</p>
         </div>
 
         <div className="screen-item">
@@ -52,107 +56,72 @@ export default function ScreensShowcase() {
               <div className="mock-appbar">
                 <img src={logo} alt="" className="mock-appbar__logo" />
                 <span>CARFISH</span>
-                <span className="mock-appbar__plate">ABC-1234</span>
+                <span className="mock-appbar__plate">{select.car1Name}</span>
               </div>
-              <div className="mock-home__beta">🧪 Versão beta</div>
+              <div className="mock-home__beta">{home.beta}</div>
               <div className="mock-home__buttons">
                 <button>
-                  <img src={fuelIcon} alt="" /> Abastecimento
+                  <img src={fuelIcon} alt="" /> {home.buttonFuel}
                 </button>
                 <button>
-                  <img src={wrenchIcon} alt="" /> Revisão
+                  <img src={wrenchIcon} alt="" /> {home.buttonWrench}
                 </button>
                 <button>
-                  <img src={washIcon} alt="" /> Lavagem
+                  <img src={washIcon} alt="" /> {home.buttonWash}
                 </button>
               </div>
               <div className="mock-home__sheet">
                 <div className="mock-home__sheet-header">
                   <span>▾</span>
-                  <strong>Últimas atividades</strong>
+                  <strong>{home.sheetTitle}</strong>
                   <span>↻</span>
                 </div>
-                <div className="mock-home__activity">
-                  <span className="dot dot--fuel" />
-                  <div>
-                    <strong>Abastecimento</strong>
-                    <span>42L · R$ 268,00</span>
+                {home.activities.map((activity) => (
+                  <div className="mock-home__activity" key={activity.title + activity.date}>
+                    <span className={`dot dot--${activity.kind}`} />
+                    <div>
+                      <strong>{activity.title}</strong>
+                      <span>{activity.detail}</span>
+                    </div>
+                    <span className="mock-home__date">{activity.date}</span>
                   </div>
-                  <span className="mock-home__date">08/07</span>
-                </div>
-                <div className="mock-home__activity">
-                  <span className="dot dot--wash" />
-                  <div>
-                    <strong>Lavagem completa</strong>
-                    <span>R$ 45,00</span>
-                  </div>
-                  <span className="mock-home__date">03/07</span>
-                </div>
-                <div className="mock-home__activity">
-                  <span className="dot dot--wrench" />
-                  <div>
-                    <strong>Troca de óleo</strong>
-                    <span>R$ 180,00</span>
-                  </div>
-                  <span className="mock-home__date">28/06</span>
-                </div>
+                ))}
               </div>
             </div>
           </PhoneFrame>
-          <h3>Tela inicial</h3>
-          <p>Acesso rápido aos três tipos de registro e ao resumo das últimas atividades.</p>
+          <h3>{home.cardTitle}</h3>
+          <p>{home.cardDescription}</p>
         </div>
 
         <div className="screen-item">
           <PhoneFrame variant="dark">
             <div className="mock mock--history">
               <div className="mock-appbar mock-appbar--dark">
-                <span>Histórico · ABC-1234</span>
+                <span>{history.headerTitle}</span>
               </div>
               <div className="mock-history__filters">
-                <span className="chip chip--active">Todos</span>
-                <span className="chip">Abastecimento</span>
-                <span className="chip">Revisão</span>
-                <span className="chip">Lavagem</span>
+                {history.filters.map((filter, index) => (
+                  <span className={`chip ${index === 0 ? 'chip--active' : ''}`} key={filter}>
+                    {filter}
+                  </span>
+                ))}
               </div>
               <div className="mock-history__list">
-                <div className="mock-history__item">
-                  <span className="dot dot--fuel" />
-                  <div>
-                    <strong>Abastecimento</strong>
-                    <span>08/07/2026 · 42L</span>
+                {history.items.map((item, index) => (
+                  <div className="mock-history__item" key={item.title + item.detail + index}>
+                    <span className={`dot dot--${item.kind}`} />
+                    <div>
+                      <strong>{item.title}</strong>
+                      <span>{item.detail}</span>
+                    </div>
+                    <strong className="mock-history__value">{item.value}</strong>
                   </div>
-                  <strong className="mock-history__value">R$ 268,00</strong>
-                </div>
-                <div className="mock-history__item">
-                  <span className="dot dot--wash" />
-                  <div>
-                    <strong>Lavagem completa</strong>
-                    <span>03/07/2026</span>
-                  </div>
-                  <strong className="mock-history__value">R$ 45,00</strong>
-                </div>
-                <div className="mock-history__item">
-                  <span className="dot dot--wrench" />
-                  <div>
-                    <strong>Troca de óleo</strong>
-                    <span>28/06/2026</span>
-                  </div>
-                  <strong className="mock-history__value">R$ 180,00</strong>
-                </div>
-                <div className="mock-history__item">
-                  <span className="dot dot--fuel" />
-                  <div>
-                    <strong>Abastecimento</strong>
-                    <span>20/06/2026 · 38L</span>
-                  </div>
-                  <strong className="mock-history__value">R$ 241,00</strong>
-                </div>
+                ))}
               </div>
             </div>
           </PhoneFrame>
-          <h3>Histórico completo</h3>
-          <p>Filtre por tipo de atividade e veja todos os registros do veículo em ordem cronológica.</p>
+          <h3>{history.cardTitle}</h3>
+          <p>{history.cardDescription}</p>
         </div>
       </div>
     </section>
